@@ -1,8 +1,3 @@
-import os
-
-content = """# Guida Operativa BCI - Unicorn Suite & Unity
-**Ultimo aggiornamento:** 01/04/2025
-
 Questo documento descrive i prerequisiti, la fase di calibrazione e la fase di evaluation per l'utilizzo dell'app BCI con Unicorn Suite, Matlab e Unity.
 
 ---
