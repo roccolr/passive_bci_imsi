@@ -1,0 +1,30 @@
+clc
+clear
+close all
+
+% --- PARAMETRI DI SIMULAZIONE UNICORN ---
+
+unicorn_f = 250 % hz 
+unicorn_buff_size = 25 % numero di campioni in un frame ricevuto da unicorn 
+amplitude_1 = 20e-6
+amplitude_2 = 30e-6
+amplitude_3 = 40e-6
+amplitude_4 = 50e-6
+
+calibration_duration = 60 % secondi
+campioni_per_run = calibration_duration*unicorn_f 
+
+% --- SALVATAGGIO DATI ---
+subFolder = 'vanilla_acquired_data';
+fileName = ['EEG_calibration_session_', datestr(now, 'yyyy-mm-dd_HH-MM'), '.mat'];
+if ~exist(subFolder, 'dir')
+    mkdir(subFolder);
+end
+
+eeg_filtered_data = out.eeg_fitlered_data;
+targetPath = fullfile(pwd, subFolder, fileName);
+save(targetPath, 'eeg_data');
+fprintf('Dati salvati correttamente in: %s\n', targetPath);
+
+
+% --- ELABORAZIONE DATI ---
