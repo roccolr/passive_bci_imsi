@@ -2,6 +2,9 @@ clear all
 close all
 clc
 
+clear all
+close all
+clc
 
 % Parametri
 Fs = 1000;
@@ -23,24 +26,24 @@ artifact_intensity = 0.5;
 
 for ch = 1:n_channels
     
-    % Segnale EEG 
+    % Segnale EEG (UGUALE al tuo)
     eeg_signal(ch,:) = sin(2*pi*f1*t) + 0.5*sin(2*pi*f2*t);
     
-    % Rumore 
+    % Rumore (UGUALE al tuo)
     eeg_signal_with_noise(ch,:) = eeg_signal(ch,:) + noise_level*randn(size(t));
     
-    % Artefatto 
+    % Artefatto (UGUALE al tuo)
     muscle_artifact = artifact_intensity*sin(2*pi*5*t);
     
     eeg_signal_with_artifact(ch,:) = eeg_signal_with_noise(ch,:) + muscle_artifact;
 end
 
+% Trasformo per Simulink (tempo x canali)
+eeg_final = eeg_signal_with_artifact';
 
 % Variabile finale per Simulink
-eeg_final = [t' eeg_signal_with_artifact'];
+eeg_final = [t' eeg_final];
 
-figure
-plot(t, eeg_signal_with_artifact');
 
 % %Generate EEG signal with noise and artifacts
 % Fs = 1000; % Sampling frequency
