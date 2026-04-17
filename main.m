@@ -41,3 +41,9 @@ fprintf('Dati salvati correttamente in: %s\n', targetPath);
 eeg_without_artifacts = utils.remove_artifacts_eeg(targetPath, unicorn_f);
 
 %% 
+
+% --- STAMPA E COMPARAZIONE --- 
+dirty_path = 'vanilla_acquired_data\EEG_calibration_session_2026-04-17_13-07.mat';
+cleaned_path = 'cleaned_data\EEG_calibration_session_2026-04-17_13-07_cleaned.mat';
+
+compare_data(dirty_path, cleaned_path);
