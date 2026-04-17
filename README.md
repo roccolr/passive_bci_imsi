@@ -1,7 +1,7 @@
-# passive_bci_imsi
-Support repository for passive bci team 
+# BCI department 
+Repository for passive _BCI_ team.  
 
-# Dependencies
+## Dependencies
 DSP Toolbox <br>
 [EEGTOOLBOX](https://eeglab.org/tutorials/01_Install/Install.html) <br>
 [CleanRawData](https://github.com/sccn/clean_rawdata) <br>
