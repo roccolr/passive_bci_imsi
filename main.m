@@ -46,4 +46,4 @@ eeg_without_artifacts = utils.remove_artifacts_eeg(targetPath, unicorn_f);
 dirty_path = 'vanilla_acquired_data\EEG_calibration_session_2026-04-18_11-16.mat';
 cleaned_path = 'cleaned_data\EEG_calibration_session_2026-04-18_11-16_cleaned.mat';
 
-compare_data(dirty_path, cleaned_path);
+utils.compare_data(dirty_path, cleaned_path);
