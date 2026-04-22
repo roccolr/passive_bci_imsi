@@ -8,16 +8,21 @@ catch
     error('Assicurati che la cartella principale di EEGLAB sia nel path di MATLAB.');
 end
 
+eeglab_base_path = fileparts(which('eeglab'));
+addpath(genpath(fullfile(eeglab_base_path, 'plugins')));
+
 %% 
 
 path = "./dataset/A01T";
 signals = utils.extraction(path);
-result = utils.check_signal(signals, 100e-6, -100e-6);
+[result, channels] = utils.check_signal(signals, 99, -99);
 
 if result == true
     fprintf("segnale buono...\n")
 else 
-    fprintf("segnale cattivo...\n")
+    for i = 1:length(channels)
+        fprintf("segnali cattivi: %d\n", i);
+    end
 end 
 
 subFolder = 'vanilla_acquired_data';
@@ -38,8 +43,8 @@ for i = 1:8
     title(sprintf('Segnale %d', i));
     grid on;
 end
-pause(3);
-close(raw_data_fig);
+% pause(3);
+% close(raw_data_fig);
 
 %%
 
