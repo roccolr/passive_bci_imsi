@@ -15,8 +15,8 @@ addpath(genpath(fullfile(eeglab_base_path, 'plugins')));
 
 path = "./dataset/A03T";
 
-raw_data_paths = string.empty();
-clean_data_paths = string.empty();
+raw_data_paths = string.empty;
+clean_data_paths = string.empty;
 
 for i = 4:9
 
@@ -26,8 +26,8 @@ for i = 4:9
     if result == true
         fprintf("segnale buono...\n")
     else 
-        for i = 1:length(channels)
-            fprintf("segnali cattivi: %d\n", i);
+        for j = 1:length(channels)
+            fprintf("segnali cattivi: %d\n", j);
         end
     end 
 
@@ -105,5 +105,4 @@ grid on;
 title('TBR');
 ylabel('TBR');
 
-fprintf("[MAIN]\tTBR mediano: %.3f\n", TBR_value);
-fprintf("[MAIN]\tEI mediano: %.3f\n", EI_value);
+fprintf("[MAIN]\tTBR mediano: %.3f\n", TBR_value)fprintf("[MAIN]\tEI mediano: %.3f\n", EI_value);
