@@ -13,54 +13,97 @@ addpath(genpath(fullfile(eeglab_base_path, 'plugins')));
 
 %% 
 
-path = "./dataset/A01T";
-signals = utils.extraction(path);
-[result, channels] = utils.check_signal(signals, 99, -99);
+path = "./dataset/A03T";
 
-if result == true
-    fprintf("segnale buono...\n")
-else 
-    for i = 1:length(channels)
-        fprintf("segnali cattivi: %d\n", i);
+raw_data_paths = string.empty();
+clean_data_paths = string.empty();
+
+for i = 4:9
+
+    signals = utils.extraction(path, i);
+    [result, channels] = utils.check_signal(signals, 99, -99);
+
+    if result == true
+        fprintf("segnale buono...\n")
+    else 
+        for i = 1:length(channels)
+            fprintf("segnali cattivi: %d\n", i);
+        end
+    end 
+
+    subFolder = 'vanilla_acquired_data';
+    fileName = ['dataset_sample_', datestr(now, 'yyyy-mm-dd_HH-MM'), '.mat'];
+    if ~exist(subFolder, 'dir')
+        mkdir(subFolder);
     end
+    targetPath = fullfile(pwd, subFolder, fileName);
+    save(targetPath, 'signals');
+    raw_data_paths(end+1) = string(targetPath);
+end
+
+%%
+% raw_data_fig = figure('Name', 'Raw Data', 'Position', [100, 100, 1000, 800]);
+% 
+% for i = 1:8
+%     % subplot(numero_righe, numero_colonne, indice_grafico)
+%     subplot(4, 2, i);
+%     plot(signals(:, i));
+%     title(sprintf('Segnale %d', i));
+%     grid on;
+% end
+% % pause(3);
+% % close(raw_data_fig);
+
+%%
+
+for i = 1:6
+
+    clean_signals_path = utils.remove_artifacts_eeg(raw_data_paths(i), 250);
+    clean_signals = load(clean_signals_path).signals;
+    clean_data_paths(end+1) = string(clean_signals_path);
+end
+%%
+
+% clean_data_fig = figure('Name', 'Cleaned Data', 'Position', [100, 100, 1000, 800]);
+% 
+% for i = 1:8
+%     % subplot(numero_righe, numero_colonne, indice_grafico)
+%     subplot(4, 2, i);
+%     plot(clean_signals(:, i));
+%     title(sprintf('Segnale %d', i));
+%     grid on;
+% end
+
+%%
+% utils.compare_data(targetPath, clean_signals_path);
+
+%%
+
+TBR_vector = [];
+EI_vector = [];
+
+for i = 1:6
+    [TBR_temp, EI_temp] = utils.retrieve_indexes(clean_data_paths(i), 250, 2, 0.5, i);
+    TBR_vector = [TBR_vector TBR_temp];
+    EI_vector = [EI_vector EI_temp];
 end 
 
-subFolder = 'vanilla_acquired_data';
-fileName = ['dataset_sample_', datestr(now, 'yyyy-mm-dd_HH-MM'), '.mat'];
-if ~exist(subFolder, 'dir')
-    mkdir(subFolder);
-end
-targetPath = fullfile(pwd, subFolder, fileName);
-save(targetPath, 'signals');
+TBR_median_final = median(TBR_vector);
+EI_median_final = median(EI_vector);
 
-%%
-raw_data_fig = figure('Name', 'Raw Data', 'Position', [100, 100, 1000, 800]);
+% Primo grafico in alto
+subplot(2, 1, 1); 
+scatter(1:length(EI_vector), EI_vector, 'b');
+grid on;
+title('EI');
+ylabel('EI');
 
-for i = 1:8
-    % subplot(numero_righe, numero_colonne, indice_grafico)
-    subplot(4, 2, i);
-    plot(signals(:, i));
-    title(sprintf('Segnale %d', i));
-    grid on;
-end
-% pause(3);
-% close(raw_data_fig);
+% Secondo grafico in basso
+subplot(2, 1, 2); 
+scatter(1:length(TBR_vector), TBR_vector, 'r');
+grid on;
+title('TBR');
+ylabel('TBR');
 
-%%
-
-clean_signals_path = utils.remove_artifacts_eeg(targetPath, 250);
-clean_signals = load(clean_signals_path).signals;
-%%
-
-clean_data_fig = figure('Name', 'Cleaned Data', 'Position', [100, 100, 1000, 800]);
-
-for i = 1:8
-    % subplot(numero_righe, numero_colonne, indice_grafico)
-    subplot(4, 2, i);
-    plot(clean_signals(:, i));
-    title(sprintf('Segnale %d', i));
-    grid on;
-end
-
-%%
-utils.compare_data(targetPath, clean_signals_path);
+fprintf("[MAIN]\tTBR mediano: %.3f\n", TBR_value);
+fprintf("[MAIN]\tEI mediano: %.3f\n", EI_value);
