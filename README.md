@@ -3,8 +3,10 @@ Repository for passive _BCI_ team.
 
 ## Dependencies
 DSP Toolbox <br>
+statistics and machine learning toolbox
 [EEGTOOLBOX](https://eeglab.org/tutorials/01_Install/Install.html) <br>
 [CleanRawData](https://github.com/sccn/clean_rawdata) <br>
+
 
 Per installare correttamente CleanRawData, eseguire il comando sulla console di matlab (lanciare matlab con i privilegi di amministratore):
 ```matlab
