@@ -1,0 +1,78 @@
+.
+├── +utils
+│   ├── check_signal.asv
+│   ├── check_signal.m
+│   ├── clean_artifacts (1).m
+│   ├── compare_data.m
+│   ├── extraction.m
+│   ├── mat2set.m
+│   ├── remove_artifacts_eeg.m
+│   └── retrieve_indexes.m
+├── LICENSE
+├── README.md
+├── aBCI_CalibrationSimulation.slx
+├── aBCI_CalibrationSimulation_2024.slx
+├── aBCI_CalibrationSimulation_2025.slx
+├── cleaned_data
+│   ├── dataset_sample_2026-04-25_10-32-26_run4_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-32-27_run5_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-32-28_run6_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-32-28_run7_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-32-29_run8_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-32-30_run9_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-48-41_run4_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-48-42_run5_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-48-43_run6_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-48-44_run7_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-48-45_run8_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-48-46_run9_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-54-32_run4_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-54-33_run5_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-54-34_run6_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-54-35_run7_cleaned.mat
+│   ├── dataset_sample_2026-04-25_10-54-36_run8_cleaned.mat
+│   └── dataset_sample_2026-04-25_10-54-36_run9_cleaned.mat
+├── dataset
+│   ├── A01T.mat
+│   ├── A02T.mat
+│   ├── A03T.mat
+│   ├── A04T.mat
+│   ├── A05T.mat
+│   ├── A06T.mat
+│   ├── A07T.mat
+│   ├── A08T.mat
+│   └── A09T.mat
+├── instruction.md
+├── main_calibrazione.m
+├── project.txt
+├── prova_funzioni.asv
+├── prova_funzioni.m
+├── slprj
+│   └── sim
+│       └── varcache
+│           └── aBCI_CalibrationSimulation
+│               ├── checksumOfCache.mat
+│               ├── tmwinternal
+│               │   └── simulink_cache.xml
+│               └── varInfo.mat
+└── vanilla_acquired_data
+    ├── dataset_sample_2026-04-25_10-32-26_run4.mat
+    ├── dataset_sample_2026-04-25_10-32-27_run5.mat
+    ├── dataset_sample_2026-04-25_10-32-28_run6.mat
+    ├── dataset_sample_2026-04-25_10-32-28_run7.mat
+    ├── dataset_sample_2026-04-25_10-32-29_run8.mat
+    ├── dataset_sample_2026-04-25_10-32-30_run9.mat
+    ├── dataset_sample_2026-04-25_10-48-41_run4.mat
+    ├── dataset_sample_2026-04-25_10-48-42_run5.mat
+    ├── dataset_sample_2026-04-25_10-48-43_run6.mat
+    ├── dataset_sample_2026-04-25_10-48-44_run7.mat
+    ├── dataset_sample_2026-04-25_10-48-45_run8.mat
+    ├── dataset_sample_2026-04-25_10-48-46_run9.mat
+    ├── dataset_sample_2026-04-25_10-54-32_run4.mat
+    ├── dataset_sample_2026-04-25_10-54-33_run5.mat
+    ├── dataset_sample_2026-04-25_10-54-34_run6.mat
+    ├── dataset_sample_2026-04-25_10-54-35_run7.mat
+    ├── dataset_sample_2026-04-25_10-54-36_run8.mat
+    └── dataset_sample_2026-04-25_10-54-36_run9.mat
+
+9 directories, 66 files

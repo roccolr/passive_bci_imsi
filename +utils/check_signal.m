@@ -1,7 +1,7 @@
 function [result, channels] = check_signal(signals, threshold_max, threshold_min)
-    
+    [rows, cols] = size(signals)
     channels = []
-    for i = 1:8
+    for i = 1:cols
         result = true;
         signal = signals(:,i);
         max_signal = max(signal);

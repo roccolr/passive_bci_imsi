@@ -1,7 +1,7 @@
-function [TBR_value, EI_value] = retrieve_indexes(path,f_samp,win_sec, overlap, run)
+function [TBR_value, EI_value] = retrieve_indexes(path,f_samp,win_sec, overlap)
     unicorn_f = f_samp;
     eeg_without_artifacts_data = load(path);
-    eeg_without_artifacts_data = data.data{1,run}.X(:, 1:8);
+    eeg_without_artifacts_data = eeg_without_artifacts_data.signals;
     win_len = round(win_sec*unicorn_f);
     step = round(win_len * (1-overlap));
     [N, nCh] = size(eeg_without_artifacts_data);

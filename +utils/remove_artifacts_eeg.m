@@ -23,10 +23,11 @@ function output_path = remove_artifacts_eeg(input_path, fs)
     raw_data = data_struct.(var_names{1});
     
     % Controllo dimensioni: ci aspettiamo Nx8
-    if size(raw_data, 2) ~= 8
-        error('La matrice caricata non ha 8 colonne. Dimensioni rilevate: %dx%d', size(raw_data,1), size(raw_data,2));
-    end
+    % if size(raw_data, 2) ~= 8
+    %     error('La matrice caricata non ha 8 colonne. Dimensioni rilevate: %dx%d', size(raw_data,1), size(raw_data,2));
+    % end
     
+    n_chan = size(raw_data, 2);
     cleaned_data = raw_data;
     
     % Filtro Passa-banda [1 - 40 Hz] (Rimozione derive lente e rumore HF)
@@ -38,12 +39,12 @@ function output_path = remove_artifacts_eeg(input_path, fs)
     try
         fprintf('Esecuzione ASR (EEGLAB) per rimozione blinks...\n');
         % ASR richiede i dati in formato (Canali x Campioni) -> Trasponiamo
-        EEG_temp = pop_editset(eeg_emptyset, 'data', cleaned_data', 'srate', fs, 'nbchan', 8);
+        EEG_temp = pop_editset(eeg_emptyset, 'data', cleaned_data', 'srate', fs, 'nbchan', n_chan);
 
         % Esecuzione clean_artifacts 
         ASR = clean_artifacts(EEG_temp, 'WindowCriterion', 'off', 'chancorr_crit', 'off', 'line_crit', 'off');
 
-        % Ripristiniamo il formato Nx8
+        % Ripristiniamo il formato NxM
         cleaned_data = double(ASR.data)';
     catch ME
         warning(['Rimozione ASR fallita (EEGLAB non trovato?). Uso solo filtri base. Dettaglio: ', ME.message]);
