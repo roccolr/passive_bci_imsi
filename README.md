@@ -3,7 +3,7 @@ Repository for passive _BCI_ team.
 
 ## Dependencies
 DSP Toolbox <br>
-statistics and machine learning toolbox
+statistics and machine learning toolbox <br>
 [EEGTOOLBOX](https://eeglab.org/tutorials/01_Install/Install.html) <br>
 [CleanRawData](https://github.com/sccn/clean_rawdata) <br>
 
@@ -19,9 +19,43 @@ Dalla GUI, selezionare file>manager estensioni e installare le seguenti estensio
 3. firfilt
 
 ## PIPELINE
--   Blocco che simula gli 8 segnali _sporchi_ (rumore e artefatti) provenienti da unicorn, ovvero un frame basato su 8 segnali campionati ad un data frequenza di campionamento 
--   Blocco di visualizzazione di questi 8 segnali e filtraggio 
--   Rimozione degli artefatti (funzione matlab)
--   Calcolo di eta theta ratio e engagement idx
+-   Eseguire il file setup.m
+-   Eseguire il modello simulink 
 
-## DIVISIONE LAVORO
+input: 8 segnali eeg 
+output: bool arresto 
+
+## Project tree
+
+```
+bci_passivo
+├── +utils
+│   ├── check_signal.m
+│   ├── clean_artifacts (1).m
+│   ├── compare_data.m
+│   ├── data_mine.m
+│   ├── extraction.m
+│   ├── remove_artifacts_eeg.m
+│   ├── remove_artifacts_eeg_fly.m
+│   ├── retrieve_indexes.m
+│   └── retrieve_indexes_fly.m
+├── LICENSE
+├── README.md
+├── cleaned_data
+├── dataset
+│   ├── A01T.mat
+│   ├── A02T.mat
+│   ├── A03T.mat
+│   ├── A05T.mat
+│   ├── A06T.mat
+│   ├── A07T.mat
+│   ├── A08T.mat
+│   └── A09T.mat
+├── install
+│   └── instruction.md
+├── setup.m
+├── test_scenario.slx
+├── vanilla_acquired_data
+└── various_scripts
+    └── prova_funzioni.m
+```
