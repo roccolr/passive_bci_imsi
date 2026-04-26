@@ -110,11 +110,11 @@ end
 
 
 figure(1)
-histogram(TBR_pmf, 20);
+histogram(TBR_pmf, 20, "FaceColor", "cyan");
 hold on
 
 figure(2)
-histogram(EI_pmf, 20);
+histogram(EI_pmf, 20, "FaceColor", "magenta");
 
 %%
 % Normalizzazione 
