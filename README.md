@@ -4,7 +4,7 @@ Repository for passive _BCI_ team.
 ## Dependencies
 DSP Toolbox <br>
 statistics and machine learning toolbox <br>
-[EEGTOOLBOX](https://eeglab.org/tutorials/01_Install/Install.html) <br>
+[EEGLAB](https://drive.google.com/drive/folders/1PAmuaPlNM6usjKqu5bbb7TdUnteIZf5i) <br>
 [CleanRawData](https://github.com/sccn/clean_rawdata) <br>
 
 
@@ -12,11 +12,16 @@ Per installare correttamente CleanRawData, eseguire il comando sulla console di 
 ```matlab
 eeglab
 ```
-
 Dalla GUI, selezionare file>manager estensioni e installare le seguenti estensioni:
 1. clean_rawdata
 2. bva-io
 3. firfilt
+
+###Nota
+Nella versione legacy non è necessario installare altre dipendenze per EEGLAB. Aggiungere EEGLAB al path (avendo cura di non includere le sotto directories) attraverso il comando: 
+```matlab
+pathtool
+```
 
 ## PIPELINE
 -   Eseguire il file setup.m
