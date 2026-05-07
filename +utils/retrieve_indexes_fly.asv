@@ -12,6 +12,10 @@ function [TBR_value, EI_value] = retrieve_indexes_fly(data_out,valid,f_samp,win_
         return
     end
 
+
+
+
+
     unicorn_f = f_samp;
     eeg_without_artifacts_data = data_out;
     win_len = round(win_sec*unicorn_f);
@@ -66,9 +70,4 @@ function [TBR_value, EI_value] = retrieve_indexes_fly(data_out,valid,f_samp,win_
 
     TBR_value = median(TBR_mean);
     EI_value = median(EI_mean);
-
-    last_TBR = TBR_value;
-    last_EI = EI_value;
-
-end
     
