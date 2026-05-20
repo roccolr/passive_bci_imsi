@@ -14,7 +14,7 @@ function [result, channels] = check_signal(signals, threshold_max, threshold_min
         end 
         if result == false
             channels = [channels, i];
-        end 
+        end
     end
 end
 

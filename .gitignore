@@ -5,3 +5,6 @@
 /*.autosave
 /dataset
 /*.asv
+/eeglab2026.0.0
+/custom_dataset 
+/data_analysis/bci_analysis
