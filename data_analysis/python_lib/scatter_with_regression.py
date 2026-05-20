@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def scatter_with_regression(n, vector):
     """
@@ -43,9 +44,7 @@ def scatter_with_regression(n, vector):
 
 # Esempio d'uso
 if __name__ == "__main__":
-    np.random.seed(42)
-    campioni = 1000
-    # Generazione di un vettore con trend lineare e rumore
-    vettore_test = np.linspace(0, 5, campioni) + np.random.normal(0, 2, campioni)
-    
-    pendenza, intercetta = scatter_with_regression(1, vettore_test)
+    matrice_np = pd.read_csv('C:\\Users\\IRISc\\passive_bci_imsi\\vector_data\\EI\\UnicornRecorder_14_05_2026_10_24_190.csv', header=None).to_numpy()
+    print(np.shape(matrice_np))
+    vettore_np = matrice_np.flatten()
+    pendenza, intercetta = scatter_with_regression(1, vettore_np)
