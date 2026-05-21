@@ -2,7 +2,7 @@ function [TBR_value, EI_value] = retrieve_indexes(path,f_samp,win_sec, overlap)
     unicorn_f = f_samp;
     eeg_without_artifacts_data = load(path);
     eeg_without_artifacts_data = eeg_without_artifacts_data.signals;
-    win_len = round(win_sec*unicorn_f);
+    win_len = round(win_sec*unicorn_f); % lunghezza finestra in termini di campioni
     step = round(win_len * (1-overlap));
     [N, nCh] = size(eeg_without_artifacts_data);
     num_win = floor((N-win_len)/step) +1;
@@ -55,19 +55,3 @@ function [TBR_value, EI_value] = retrieve_indexes(path,f_samp,win_sec, overlap)
     TBR_value = median(TBR_mean);
     EI_value = median(EI_mean);
     
-    % % Primo grafico in alto
-    % subplot(2, 1, 1); 
-    % scatter(1:length(EI_mean), EI_mean, 'b');
-    % grid on;
-    % title('EI');
-    % ylabel('EI');
-    % 
-    % % Secondo grafico in basso
-    % subplot(2, 1, 2); 
-    % scatter(1:length(TBR_mean), TBR_mean, 'r');
-    % grid on;
-    % title('TBR');
-    % ylabel('TBR');
-    % 
-    % fprintf("[MAIN]\tTBR mediano: %.3f\n", TBR_value);
-    % fprintf("[MAIN]\tEI mediano: %.3f\n", EI_value);

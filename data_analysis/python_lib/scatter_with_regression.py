@@ -44,7 +44,7 @@ def scatter_with_regression(n, vector):
 
 # Esempio d'uso
 if __name__ == "__main__":
-    matrice_np = pd.read_csv('C:\\Users\\IRISc\\passive_bci_imsi\\vector_data\\EI\\UnicornRecorder_14_05_2026_10_24_190.csv', header=None).to_numpy()
+    matrice_np = pd.read_csv('vector_data\\TBR\\UnicornRecorder_14_05_2026_12_17_020.csv', header=None).to_numpy()
     print(np.shape(matrice_np))
     vettore_np = matrice_np.flatten()
     pendenza, intercetta = scatter_with_regression(1, vettore_np)

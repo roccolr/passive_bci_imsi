@@ -45,10 +45,8 @@ def kendall_extract(n, vector):
 
 # Esempio d'uso
 if __name__ == "__main__":
-    # Generazione di un vettore di test (es. un trend lineare con rumore)
-    np.random.seed(42)
-    campioni = 1000
-    vettore_test = np.linspace(0, 5, campioni) + np.random.normal(0, 2, campioni)
-    
-    tau_calcolato = kendall_extract(1, vettore_test)
+    matrice_np = pd.read_csv('vector_data\\TBR\\UnicornRecorder_14_05_2026_12_17_020.csv', header=None).to_numpy()
+    print(np.shape(matrice_np))
+    vettore_np = matrice_np.flatten()
+    tau_calcolato = kendall_extract(1, vettore_np)
     print(f"Tau calcolato: {tau_calcolato:.4f}")

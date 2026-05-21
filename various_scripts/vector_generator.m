@@ -34,7 +34,7 @@ for i = 1:length(files)
     data = load(full_path).data;
     clean_signals_path = utils.remove_artifacts_eeg(full_path, 250);
     
-    [TBR, EI] = utils.retrieve_indexes_custom(full_path, 250, 2, 0.5);
+    [TBR, EI] = utils.retrieve_indexes_custom(full_path, 250, 2, 0.5); % qui dobbiamo mettere 0 overlap
     [~, base_name, ~] = fileparts(filename);
     output_filename = [base_name, '.csv'];
     output_full_path = fullfile(output_folder, output_filename);
