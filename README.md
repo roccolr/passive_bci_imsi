@@ -33,7 +33,7 @@ output: bool arresto
 ## Project tree
 
 ```
-bci_passivo
+passive_bci_imsi/
 ├── +utils
 │   ├── check_signal.m
 │   ├── clean_artifacts (1).m
@@ -43,24 +43,46 @@ bci_passivo
 │   ├── remove_artifacts_eeg.m
 │   ├── remove_artifacts_eeg_fly.m
 │   ├── retrieve_indexes.m
+│   ├── retrieve_indexes_custom.m
 │   └── retrieve_indexes_fly.m
 ├── LICENSE
 ├── README.md
-├── cleaned_data
-├── dataset
-│   ├── A01T.mat
-│   ├── A02T.mat
-│   ├── A03T.mat
-│   ├── A05T.mat
-│   ├── A06T.mat
-│   ├── A07T.mat
-│   ├── A08T.mat
-│   └── A09T.mat
+├── data_analysis
+│   ├── bci_analysis
+│   ├── main.py
+│   ├── python_lib
+│   └── requirements.txt
 ├── install
 │   └── instruction.md
 ├── setup.m
+├── slprj
+│   ├── _consts
+│   ├── _jitprj
+│   ├── _sfprj
+│   └── sim
 ├── test_scenario.slx
+├── test_scenario.slxc
+├── test_scenario_legacy.slx
 ├── vanilla_acquired_data
-└── various_scripts
-    └── prova_funzioni.m
+├── various_scripts
+│   ├── prova_funzioni.m
+│   ├── vector_generator.asv
+│   └── vector_generator.m
+└── vector_data
+    ├── EI
+    └── TBR
 ```
+
+## Python requirements 
+Crea un virtual environment 
+
+```bash
+python3 -m venv myvenv
+```
+
+Usa pip di questo environment per installare le dipendenze:
+
+```matlab
+pip3 install -r data_analysis/requirements.txt
+```
+
