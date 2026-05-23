@@ -86,3 +86,21 @@ Usa pip di questo environment per installare le dipendenze:
 pip3 install -r data_analysis/requirements.txt
 ```
 
+## Istruzioni per acquisizioni di AlfaAlfa
+1. Aprire su simulink il file /profilazione.slcx;
+2. Aprire su matlab il file /profilazione.m;
+3. Eseguire la sezione denominata SETUP su matlab; 
+4. Eseguire la sezione denominata VARIABLES su matlab;
+5. Creare, se non esiste già, nella cartella principale del progetto la cartella "dataset_alfo";
+6. Nella sezione acquisizione, cambiare la variabile numero_osservazione = i con i=1...30;
+7. Eseguire l'acquisizione su simulink, assicurandosi che il tempo sia settato a 60 s;
+8. Dopo la 30esima iterazione, avviare su matlab la sezione data_process. 
+
+L'output dell'ultimo passaggio dovrebbe essere:
+```bash
+[MAIN]	MEDIA TBR: 	0.874	CL 99.0		CI [0.8744, 0.8744]
+[MAIN]	MEDIA EI: 	0.311	CL 99.0		CI [0.3108, 0.3108]
+```
+
+## Note per l'integrazione 
+1. Discutere circa l'utilizzo dello stesso blocco per la rimozione degli artefatti;
