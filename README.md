@@ -33,13 +33,14 @@ output: bool arresto
 ## Project tree
 
 ```
-passive_bci_imsi/
 ├── +utils
 │   ├── check_signal.m
 │   ├── clean_artifacts (1).m
 │   ├── compare_data.m
 │   ├── data_mine.m
 │   ├── extraction.m
+│   ├── process_data.asv
+│   ├── process_data.m
 │   ├── remove_artifacts_eeg.m
 │   ├── remove_artifacts_eeg_fly.m
 │   ├── retrieve_indexes.m
@@ -54,12 +55,9 @@ passive_bci_imsi/
 │   └── requirements.txt
 ├── install
 │   └── instruction.md
+├── profilazione.m
+├── profilazione.slxc
 ├── setup.m
-├── slprj
-│   ├── _consts
-│   ├── _jitprj
-│   ├── _sfprj
-│   └── sim
 ├── test_scenario.slx
 ├── test_scenario.slxc
 ├── test_scenario_legacy.slx
