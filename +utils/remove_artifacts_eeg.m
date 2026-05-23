@@ -59,7 +59,7 @@ function output_path = remove_artifacts_eeg(input_path, fs)
         filepath = pwd;
     end
     [parent_dir, ~, ~] = fileparts(filepath);
-    new_folder = fullfile(parent_dir, 'cleaned_data');
+    new_folder = fullfile(parent_dir, 'cleaned_data_custom');
     
     if ~exist(new_folder, 'dir')
         mkdir(new_folder);

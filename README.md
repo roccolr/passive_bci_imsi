@@ -4,7 +4,7 @@ Repository for passive _BCI_ team.
 ## Dependencies
 DSP Toolbox <br>
 statistics and machine learning toolbox <br>
-[EEGTOOLBOX](https://eeglab.org/tutorials/01_Install/Install.html) <br>
+[EEGLAB](https://drive.google.com/drive/folders/1PAmuaPlNM6usjKqu5bbb7TdUnteIZf5i) <br>
 [CleanRawData](https://github.com/sccn/clean_rawdata) <br>
 
 
@@ -12,11 +12,16 @@ Per installare correttamente CleanRawData, eseguire il comando sulla console di 
 ```matlab
 eeglab
 ```
-
 Dalla GUI, selezionare file>manager estensioni e installare le seguenti estensioni:
 1. clean_rawdata
 2. bva-io
 3. firfilt
+
+###Nota
+Nella versione legacy non è necessario installare altre dipendenze per EEGLAB. Aggiungere EEGLAB al path (avendo cura di non includere le sotto directories) attraverso il comando: 
+```matlab
+pathtool
+```
 
 ## PIPELINE
 -   Eseguire il file setup.m
@@ -28,7 +33,7 @@ output: bool arresto
 ## Project tree
 
 ```
-bci_passivo
+passive_bci_imsi/
 ├── +utils
 │   ├── check_signal.m
 │   ├── clean_artifacts (1).m
@@ -38,24 +43,64 @@ bci_passivo
 │   ├── remove_artifacts_eeg.m
 │   ├── remove_artifacts_eeg_fly.m
 │   ├── retrieve_indexes.m
+│   ├── retrieve_indexes_custom.m
 │   └── retrieve_indexes_fly.m
 ├── LICENSE
 ├── README.md
-├── cleaned_data
-├── dataset
-│   ├── A01T.mat
-│   ├── A02T.mat
-│   ├── A03T.mat
-│   ├── A05T.mat
-│   ├── A06T.mat
-│   ├── A07T.mat
-│   ├── A08T.mat
-│   └── A09T.mat
+├── data_analysis
+│   ├── bci_analysis
+│   ├── main.py
+│   ├── python_lib
+│   └── requirements.txt
 ├── install
 │   └── instruction.md
 ├── setup.m
+├── slprj
+│   ├── _consts
+│   ├── _jitprj
+│   ├── _sfprj
+│   └── sim
 ├── test_scenario.slx
+├── test_scenario.slxc
+├── test_scenario_legacy.slx
 ├── vanilla_acquired_data
-└── various_scripts
-    └── prova_funzioni.m
+├── various_scripts
+│   ├── prova_funzioni.m
+│   ├── vector_generator.asv
+│   └── vector_generator.m
+└── vector_data
+    ├── EI
+    └── TBR
 ```
+
+## Python requirements 
+Crea un virtual environment 
+
+```bash
+python3 -m venv myvenv
+```
+
+Usa pip di questo environment per installare le dipendenze:
+
+```matlab
+pip3 install -r data_analysis/requirements.txt
+```
+
+## Istruzioni per acquisizioni di AlfaAlfa
+1. Aprire su simulink il file /profilazione.slcx;
+2. Aprire su matlab il file /profilazione.m;
+3. Eseguire la sezione denominata SETUP su matlab; 
+4. Eseguire la sezione denominata VARIABLES su matlab;
+5. Creare, se non esiste già, nella cartella principale del progetto la cartella "dataset_alfo";
+6. Nella sezione acquisizione, cambiare la variabile numero_osservazione = i con i=1...30;
+7. Eseguire l'acquisizione su simulink, assicurandosi che il tempo sia settato a 60 s;
+8. Dopo la 30esima iterazione, avviare su matlab la sezione data_process. 
+
+L'output dell'ultimo passaggio dovrebbe essere:
+```bash
+[MAIN]	MEDIA TBR: 	0.874	CL 99.0		CI [0.8744, 0.8744]
+[MAIN]	MEDIA EI: 	0.311	CL 99.0		CI [0.3108, 0.3108]
+```
+
+## Note per l'integrazione 
+1. Discutere circa l'utilizzo dello stesso blocco per la rimozione degli artefatti;
