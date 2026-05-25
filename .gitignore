@@ -15,3 +15,7 @@
 /vector_data
 /python_lib/__pycache__
 /+utils/*.asv 
+/.vscode
+/media 
+/animation/__pycache__
+/animation/animation_venv
