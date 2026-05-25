@@ -38,7 +38,7 @@ class MultiWindowSignal(Scene):
             width=rect_width,
             height=rect_height,
             fill_color=BLACK, 
-            fill_opacity=0.85,
+            fill_opacity=0.70,
             stroke_color=YELLOW,
             stroke_width=2
         )
@@ -75,7 +75,7 @@ class MultiWindowSignal(Scene):
             width=rect_width,
             height=rect_height,
             fill_color=BLACK,
-            fill_opacity=0.85,
+            fill_opacity=0.70,
             stroke_color=RED,  # Colore rosso per distinguere visivamente la seconda fase
             stroke_width=2
         )
