@@ -1,5 +1,8 @@
 from python_lib import scatter_with_regression
 from pathlib import Path
+from scipy import stats
+import numpy as np
+
 
 if __name__ == '__main__':
     output_path = "C:\\Users\\Flexo Rodriguez\\Desktop\\data_mining_alfonso"
@@ -23,3 +26,24 @@ if __name__ == '__main__':
                 i+=1
 
 print(tau_map)
+
+# --- TEST DI WILCOXON --- 
+
+# H0 -> La mediana dei tau è zero
+# H1 -> La mediana dei tau è diversa da zero 
+
+res_TBR = stats.wilcoxon(tau_map["TBR"])
+res_EI = stats.wilcoxon(tau_map["EI"])
+
+if res_TBR.pvalue < 0.1:
+    print(f"[TBR] Significativo (p={res_TBR.pvalue:.3f}): la mediana dei tau è diversa da 0.")
+else:
+    print(f"[TBR] Non significativo (p={res_TBR.pvalue:.3f}).")
+
+    
+if res_EI.pvalue < 0.1:
+    print(f"[EI] Significativo (p={res_TBR.pvalue:.3f}): la mediana dei tau è diversa da 0.")
+else:
+    print(f"[EI] Non significativo (p={res_EI.pvalue:.3f}).")
+
+
