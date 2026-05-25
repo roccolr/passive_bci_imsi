@@ -17,7 +17,7 @@ Dalla GUI, selezionare file>manager estensioni e installare le seguenti estensio
 2. bva-io
 3. firfilt
 
-###Nota
+##Nota
 Nella versione legacy non è necessario installare altre dipendenze per EEGLAB. Aggiungere EEGLAB al path (avendo cura di non includere le sotto directories) attraverso il comando: 
 ```matlab
 pathtool
@@ -35,7 +35,6 @@ output: bool arresto
 ```
 ├── +utils
 │   ├── check_signal.m
-│   ├── clean_artifacts (1).m
 │   ├── compare_data.m
 │   ├── data_mine.m
 │   ├── extraction.m
@@ -63,12 +62,10 @@ output: bool arresto
 ├── test_scenario_legacy.slx
 ├── vanilla_acquired_data
 ├── various_scripts
-│   ├── prova_funzioni.m
-│   ├── vector_generator.asv
-│   └── vector_generator.m
-└── vector_data
-    ├── EI
-    └── TBR
+    ├── prova_funzioni.m
+    ├── vector_generator.asv
+    └── vector_generator.m
+
 ```
 
 ## Python requirements 
