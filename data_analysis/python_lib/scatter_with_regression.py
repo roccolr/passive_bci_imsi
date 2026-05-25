@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import trend_extractor 
+from python_lib import trend_extractor
 
 def scatter_with_regression(n, input_path,an_type, output_path=""):
     """
@@ -13,7 +13,7 @@ def scatter_with_regression(n, input_path,an_type, output_path=""):
     vector (array-like): Vettore delle osservazioni (campionate a 250 Hz).
     
     Ritorna:
-    tuple: (pendenza, intercetta) della retta di regressione.
+    tuple: (tau, pendenza, intercetta) della retta di regressione.
     """
     output_file_name = "\\".join(output_path.split("\\")[0:5]) + f"\\{an_type}\\" + str(input_path.split("\\")[2].split(".")[0]) + ".png"
     print(output_file_name)
@@ -48,7 +48,7 @@ def scatter_with_regression(n, input_path,an_type, output_path=""):
     plt.savefig(output_file_name)
     
     print(f"{output_file_name}\tsalvato con successo!")
-    return slope, intercept
+    return tau, slope, intercept
 
 # Esempio d'uso
 if __name__ == "__main__":
