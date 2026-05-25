@@ -6,7 +6,8 @@ if __name__ == '__main__':
     base_input_path = "vector_data"
     types = ["TBR", "EI"]
     tau_map = dict()
-    
+    verbose = False
+
     for type in types:
         directory = Path(base_input_path+f"\\{type}\\")
         tau_map[type] = []
@@ -15,8 +16,9 @@ if __name__ == '__main__':
             if file.is_file():
                 input_path = base_input_path+f"\\{type}\\"
                 input_path = input_path + file.name
-                print(f"processing {input_path}\tinto\t{output_path}")
-                tau = scatter_with_regression.scatter_with_regression(i, input_path, type, output_path)
+                if verbose == True:
+                    print(f"processing {input_path}\tinto\t{output_path}")
+                tau, pendenza, intercetta = scatter_with_regression.scatter_with_regression(i, input_path, type, output_path)
                 tau_map[type].append(tau)
                 i+=1
 
