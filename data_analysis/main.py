@@ -27,23 +27,50 @@ if __name__ == '__main__':
 
 print(tau_map)
 
+# TEST DI MAN KENDAL 
+
+alpha = 0.5
+z_alpha = 1.96
+
+trovato = False 
+for tau_v in tau_map["TBR"]:
+    if np.abs(tau_v) > z_alpha:
+        print("[ACCETTATA IPOTESI NULLA]\tTBR")
+        trovato = True
+
+if trovato == False:
+    print("[RIFIUTATA IPOTESI NULLA]\tTBR")
+trovato = False 
+
+for tau_v in tau_map["EI"]:
+    if np.abs(tau_v) > z_alpha:
+        print("[ACCETTATA IPOTESI NULLA]\tEI")
+        trovato = True
+
+if trovato == False:
+    print("[RIFIUTATA IPOTESI NULLA]\tEI")
+
+# OUTPUT 
+# [RIFIUTATA IPOTESI NULLA]       TBR
+# [RIFIUTATA IPOTESI NULLA]       EI
+
 # --- TEST DI WILCOXON --- 
 
 # H0 -> La mediana dei tau è zero
 # H1 -> La mediana dei tau è diversa da zero 
 
-res_TBR = stats.wilcoxon(tau_map["TBR"])
-res_EI = stats.wilcoxon(tau_map["EI"])
+# res_TBR = stats.wilcoxon(tau_map["TBR"])
+# res_EI = stats.wilcoxon(tau_map["EI"])
 
-if res_TBR.pvalue < 0.1:
-    print(f"[TBR] Significativo (p={res_TBR.pvalue:.3f}): la mediana dei tau è diversa da 0.")
-else:
-    print(f"[TBR] Non significativo (p={res_TBR.pvalue:.3f}).")
+# if res_TBR.pvalue < 0.1:
+#     print(f"[TBR] Significativo (p={res_TBR.pvalue:.3f}): la mediana dei tau è diversa da 0.")
+# else:
+#     print(f"[TBR] Non significativo (p={res_TBR.pvalue:.3f}).")
 
     
-if res_EI.pvalue < 0.1:
-    print(f"[EI] Significativo (p={res_TBR.pvalue:.3f}): la mediana dei tau è diversa da 0.")
-else:
-    print(f"[EI] Non significativo (p={res_EI.pvalue:.3f}).")
+# if res_EI.pvalue < 0.1:
+#     print(f"[EI] Significativo (p={res_TBR.pvalue:.3f}): la mediana dei tau è diversa da 0.")
+# else:
+#     print(f"[EI] Non significativo (p={res_EI.pvalue:.3f}).")
 
 
