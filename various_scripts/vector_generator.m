@@ -13,7 +13,7 @@ addpath(genpath(fullfile(eeglab_base_path, 'plugins')));
 
 %%
 clean_data_paths = {};
-folder_path = 'C:\Users\IRISc\passive_bci_imsi\custom_dataset_mat\';
+folder_path = 'C:\Users\Flexo Rodriguez\Desktop\passive_bci_imsi\custom_dataset_mat';
 file_pattern = fullfile(folder_path, '*.mat');
 files = dir(file_pattern);
 output_folder = './vector_data/EI';
@@ -34,13 +34,13 @@ for i = 1:length(files)
     data = load(full_path).data;
     clean_signals_path = utils.remove_artifacts_eeg(full_path, 250);
     
-    [TBR, EI] = utils.retrieve_indexes_custom(full_path, 250, 2, 0.5); % qui dobbiamo mettere 0 overlap
+    [TBR, EI] = utils.retrieve_indexes_custom(full_path, 250, 2, 0); % qui dobbiamo mettere 0 overlap
     [~, base_name, ~] = fileparts(filename);
     output_filename = [base_name, '.csv'];
     output_full_path = fullfile(output_folder, output_filename);
 
     writematrix(EI, output_full_path);
-    fprintf('Matrice esportata in: %s\n', full_path);
+    fprintf('Matrice esportata in: %s\n', output_filename);
 end
 
 
