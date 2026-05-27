@@ -25,7 +25,7 @@ campioni_per_run = calibration_duration*unicorn_f
 %%
 % --- ACQUISIZIONE --- 
 
-numero_osservazione = 1;
+numero_osservazione = 30;
 nome_soggetto = "Alfo";
 gender_soggetto = "male";
 
