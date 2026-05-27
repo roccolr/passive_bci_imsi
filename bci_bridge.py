@@ -70,29 +70,29 @@ async def ascolta_attivo():
 async def main():
     global stanchezza, concentrazione, stato_mano, ultimo_mittente
 
-    # print(f" Cerco la scheda '{NOME_NUCLEO}'...")
-    # devices = await BleakScanner.discover(timeout=20.0)
-    # target_device = next((d for d in devices if d.name and NOME_NUCLEO in d.name), None)
+    print(f" Cerco la scheda '{NOME_NUCLEO}'...")
+    devices = await BleakScanner.discover(timeout=20.0)
+    target_device = next((d for d in devices if d.name and NOME_NUCLEO in d.name), None)
 
-    # if not target_device:
-    #     print("\n Scheda non trovata.")
-    #     return
+    if not target_device:
+        print("\n Scheda non trovata.")
+        return
 
-    # print(f" Trovata: {target_device.name}. Connessione in corso...")
-    # client = BleakClient(target_device)
+    print(f" Trovata: {target_device.name}. Connessione in corso...")
+    client = BleakClient(target_device)
 
-    # for _ in range(5):
-    #     try:
-    #         await client.connect(timeout=10.0)
-    #         break
-    #     except Exception:
-    #         await asyncio.sleep(2)
+    for _ in range(5):
+        try:
+            await client.connect(timeout=10.0)
+            break
+        except Exception:
+            await asyncio.sleep(2)
 
-    # if not client.is_connected:
-    #     print("\n Impossibile connettersi.")
-    #     return
+    if not client.is_connected:
+        print("\n Impossibile connettersi.")
+        return
 
-    # print("\n CONNESSIONE STABILITA! Avvio i motori asincroni...\n")
+    print("\n CONNESSIONE STABILITA! Avvio i motori asincroni...\n")
 
     task_act = asyncio.create_task(ascolta_passivo())
     task_pas = asyncio.create_task(ascolta_attivo())
@@ -130,8 +130,8 @@ async def main():
         sock_attivo.shutdown(socket.SHUT_RDWR)
         sock_passivo.close()
         sock_attivo.close()
-        # if client.is_connected:
-        #     await client.disconnect()
+        if client.is_connected:
+            await client.disconnect()
 
 if __name__ == "__main__":
     asyncio.run(main())
