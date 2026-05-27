@@ -11,7 +11,7 @@ UUID_RX_CHAR = "d973f2e2-b19e-11e2-9e96-0800200c9a66"
 UDP_IP = "127.0.0.1"  
 
 sock_passivo = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock_passivo.bind((UDP_IP, 5006))
+sock_passivo.bind((UDP_IP, 5011))
 sock_passivo.setblocking(False) 
 
 sock_attivo = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -34,8 +34,8 @@ async def ascolta_passivo():
     while True:
         try:
             while True: 
-                data, _ = sock_passivo.recvfrom(1024)
-                valori = struct.unpack('<dd', data) 
+                data, _ = sock_passivo.recvfrom(8192)
+                valori = struct.unpack('<ff', data) 
                 
                 stanchezza = valori[0]
                 concentrazione = valori[1]
@@ -55,7 +55,7 @@ async def ascolta_attivo():
     while True:
         try:
             while True:
-                data, _ = sock_attivo.recvfrom(1024)
+                data, _ = sock_attivo.recvfrom(8192)
                 stato_mano = int(struct.unpack('B', data)[0])
                 ultimo_mittente = "ATTIVO"
         except BlockingIOError:
@@ -70,29 +70,29 @@ async def ascolta_attivo():
 async def main():
     global stanchezza, concentrazione, stato_mano, ultimo_mittente
 
-    print(f" Cerco la scheda '{NOME_NUCLEO}'...")
-    devices = await BleakScanner.discover(timeout=20.0)
-    target_device = next((d for d in devices if d.name and NOME_NUCLEO in d.name), None)
+    # print(f" Cerco la scheda '{NOME_NUCLEO}'...")
+    # devices = await BleakScanner.discover(timeout=20.0)
+    # target_device = next((d for d in devices if d.name and NOME_NUCLEO in d.name), None)
 
-    if not target_device:
-        print("\n Scheda non trovata.")
-        return
+    # if not target_device:
+    #     print("\n Scheda non trovata.")
+    #     return
 
-    print(f" Trovata: {target_device.name}. Connessione in corso...")
-    client = BleakClient(target_device)
+    # print(f" Trovata: {target_device.name}. Connessione in corso...")
+    # client = BleakClient(target_device)
 
-    for _ in range(5):
-        try:
-            await client.connect(timeout=10.0)
-            break
-        except Exception:
-            await asyncio.sleep(2)
+    # for _ in range(5):
+    #     try:
+    #         await client.connect(timeout=10.0)
+    #         break
+    #     except Exception:
+    #         await asyncio.sleep(2)
 
-    if not client.is_connected:
-        print("\n Impossibile connettersi.")
-        return
+    # if not client.is_connected:
+    #     print("\n Impossibile connettersi.")
+    #     return
 
-    print("\n CONNESSIONE STABILITA! Avvio i motori asincroni...\n")
+    # print("\n CONNESSIONE STABILITA! Avvio i motori asincroni...\n")
 
     task_act = asyncio.create_task(ascolta_passivo())
     task_pas = asyncio.create_task(ascolta_attivo())
@@ -114,7 +114,7 @@ async def main():
 
             # Formattazione e Invio allo schedino
             comando_str = f"B:{b_blocco},H:{stato_mano}\n"
-            await client.write_gatt_char(UUID_RX_CHAR, comando_str.encode('utf-8'))
+            # await client.write_gatt_char(UUID_RX_CHAR, comando_str.encode('utf-8'))
             
             # Stampa di controllo
             if ultimo_mittente != "Nessuno":
@@ -130,8 +130,8 @@ async def main():
         sock_attivo.shutdown(socket.SHUT_RDWR)
         sock_passivo.close()
         sock_attivo.close()
-        if client.is_connected:
-            await client.disconnect()
+        # if client.is_connected:
+        #     await client.disconnect()
 
 if __name__ == "__main__":
     asyncio.run(main())
