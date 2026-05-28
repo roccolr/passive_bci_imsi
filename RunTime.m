@@ -4,7 +4,7 @@
 addpath('DATA/')
 addpath("FUNCTIONS/")
 load("best_interval.mat") ;
-fs = 250;
+%fs = 250;
 
 % ALGORITHM PARAMETERS
 % Pre-processing

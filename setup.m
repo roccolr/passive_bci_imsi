@@ -1,8 +1,5 @@
 % setup
-
-clc
-clear
-close all
+fs = 250;
 try
     eeglab nogui;
 catch
@@ -17,7 +14,7 @@ amplitude_3 = 40e-6;
 amplitude_4 = 50e-6;
 
 calibration_duration = 60; % secondi
-campioni_per_run = calibration_duration*unicorn_f;
+campioni_per_run = calibration_duration*fs;
 
 
 
