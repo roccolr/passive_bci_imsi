@@ -142,9 +142,9 @@ async def main():
             command_str = f"B:{hand_block},G:{grip_command}\n"
             await client.write_gatt_char(SERVICE_UUID, command_str.encode('utf-8'))
 
-            # Stampa di controllo
+            # Debug print of the received and evaluated data
             if latest_sender != "None":
-                print(f"[{latest_sender}] F:{fatigue:>4.1f} | C:{concentration:>4.1f} -> Command sent: '{command_str}'")
+                print(f"[{latest_sender}] F:{fatigue:>4.1f} | C:{concentration:>4.1f} -> Command sent: {command_str}")
                 latest_sender = "None" 
             else:
                 print("No data received yet.")
