@@ -10,8 +10,6 @@ catch
 end
 eeglab_base_path = fileparts(which('eeglab'));
 addpath(genpath(fullfile(eeglab_base_path, 'plugins')));
-unicorn_f = 250; % hz
-fs = unicorn_f;
 unicorn_buff_size = 25; % numero di campioni in un frame ricevuto da unicorn
 amplitude_1 = 20e-6;
 amplitude_2 = 30e-6;

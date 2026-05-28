@@ -175,8 +175,6 @@ const_a         = Mdl_a.Coeffs(1,2).Const;
 
 buffLen = 16; %servirà per le metriche nell'evaluation su Simulink
 
-%% Execute Simulink "Modello_evaluation_Unicorn.slx" per giocare con l'app
-
 %% per caricare un raw EEG su Simulink in assenza del caschetto
 addpath(genpath('sample data for calibration'));
 load('AntEsp_S3_B0_3.mat')
