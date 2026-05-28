@@ -133,7 +133,6 @@ async def main():
             # Debug print of the received and evaluated data
             if latest_sender != "None":
                 print(f"[{latest_sender}] F:{fatigue:>4.1f} | C:{concentration:>4.1f} -> Command sent: {command_str}")
-                latest_sender = "None" 
             else:
                 print("No data received yet.")
             
