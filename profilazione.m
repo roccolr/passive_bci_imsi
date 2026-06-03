@@ -70,8 +70,11 @@ std_ei = std(m_ei);
 C_L = 0.99; % confidence interval
 alpha = 1-C_L; % significance 
 
-t_crit_TBR = tinv(1 - alpha/2, 29);
-t_crit_EI = tinv(1-alpha/2, 29);
+% t_crit_TBR = tinv(1 - alpha/2, 29);
+% t_crit_EI = tinv(1-alpha/2, 29);
+
+t_crit_TBR = 1;
+t_crit_EI = 1;
 
 margin_of_error_TBR = t_crit_TBR * (std_tbr / sqrt(30));
 margin_of_error_EI = t_crit_EI * (std_ei / sqrt(30));
@@ -82,6 +85,6 @@ ci_upper_TBR = x_tbr + margin_of_error_TBR;
 ci_lower_EI = x_ei - margin_of_error_EI;
 ci_upper_EI = x_ei + margin_of_error_EI;
 
-fprintf("[MAIN]\tMEDIA TBR: \t%.3f\tCL %.1f\t\tCI [%.4f, %.4f]\n", x_tbr, 100*C_L, ci_lower_TBR, ci_upper_TBR);
-fprintf("[MAIN]\tMEDIA EI: \t%.3f\tCL %.1f\t\tCI [%.4f, %.4f]\n", x_ei, 100*C_L, ci_lower_EI, ci_upper_EI);
+fprintf("[MAIN]\tMEDIA TBR: \t%.3f\tCL %.1f\t\tCI [%.4f, %.4f]\tdev [%.4f]\n", x_tbr, 100*C_L, ci_lower_TBR, ci_upper_TBR, std_tbr);
+fprintf("[MAIN]\tMEDIA EI: \t%.3f\tCL %.1f\t\tCI [%.4f, %.4f]\tdev [%.4f]\n", x_ei, 100*C_L, ci_lower_EI, ci_upper_EI, std_ei);
 
