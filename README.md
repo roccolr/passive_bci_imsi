@@ -93,8 +93,8 @@ pip3 install -r data_analysis/requirements.txt
 
 L'output dell'ultimo passaggio dovrebbe essere:
 ```bash
-[MAIN]	MEDIA TBR: 	0.843	CL 99.0		CI [0.5974, 1.0886]
-[MAIN]	MEDIA EI: 	0.308	CL 99.0		CI [0.2149, 0.4016]
+[MAIN]	MEDIA TBR: 	0.843	CL 99.0		CI [0.5974, 1.0886] dev [0.4880]
+[MAIN]	MEDIA EI: 	0.308	CL 99.0		CI [0.2149, 0.4016] dev [0.1856]
 ```
 
 ## Note per l'integrazione 
