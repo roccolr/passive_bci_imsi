@@ -33,39 +33,61 @@ output: bool arresto
 ## Project tree
 
 ```
+project
+├── aBCI_CalibrationSimulation.slxc
+├── bci_arm_unity_bridge.py
+├── bci_bridge_to_arm.py
+├── BCI_Control_Log_2024a.slx
+├── BCI_Control_Log_2024a.slx.original
+├── bci.slx
+├── best_interval.mat
+├── data_analysis
+│   ├── main.py
+│   ├── python_lib
+│   │   ├── scatter_with_regression.py
+│   │   ├── sean.py
+│   │   ├── tempCodeRunnerFile.py
+│   │   ├── transformer.py
+│   │   └── trend_extractor.py
+│   └── requirements.txt
+├── FUNCTIONS
+│   ├── boundedline.m
+│   ├── CSP_2task.m
+│   ├── CSPapply.m
+│   ├── CSPtrain.m
+│   ├── extraction.m
+│   ├── filterBankCOYLE.m
+│   ├── inpaint_nans.m
+│   ├── inputsdlg.m
+│   └── separation.m
+├── install
+│   └── instruction.md
+├── LICENSE
+├── OfflineDataAnalysis_Unicorn.m
+├── profilazione_legacy.slx
+├── profilazione.m
+├── profilazione.slx
+├── README.md
+├── RunTime.m
+├── SaveData.m
+├── setup.m
+├── test_scenario_legacy.slx
+├── test_scenario.slx
+├── test_scenario.slxc
 ├── +utils
 │   ├── check_signal.m
 │   ├── compare_data.m
 │   ├── data_mine.m
 │   ├── extraction.m
-│   ├── process_data.asv
 │   ├── process_data.m
-│   ├── remove_artifacts_eeg.m
 │   ├── remove_artifacts_eeg_fly.m
-│   ├── retrieve_indexes.m
+│   ├── remove_artifacts_eeg.m
 │   ├── retrieve_indexes_custom.m
-│   └── retrieve_indexes_fly.m
-├── LICENSE
-├── README.md
-├── data_analysis
-│   ├── bci_analysis
-│   ├── main.py
-│   ├── python_lib
-│   └── requirements.txt
-├── install
-│   └── instruction.md
-├── profilazione.m
-├── profilazione.slxc
-├── setup.m
-├── test_scenario.slx
-├── test_scenario.slxc
-├── test_scenario_legacy.slx
-├── vanilla_acquired_data
-├── various_scripts
-    ├── prova_funzioni.m
-    ├── vector_generator.asv
-    └── vector_generator.m
-
+│   ├── retrieve_indexes_fly.m
+│   └── retrieve_indexes.m
+└── various_scripts
+    ├── prova_funzioni.m
+    └── vector_generator.m
 ```
 
 ## Python requirements 
