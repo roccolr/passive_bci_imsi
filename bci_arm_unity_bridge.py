@@ -15,8 +15,10 @@ ACTIVE_PORT = 5010
 UNITY_PORT = 5006
 
 # Fatigue and concentration thresholds
-FATIGUE_THRESHOLD = 60.0
-CONCENTRATION_THRESHOLD = 20.0
+# FATIGUE_THRESHOLD = 0.355
+FATIGUE_THRESHOLD = 100
+CONCENTRATION_THRESHOLD = -100
+# CONCENTRATION_THRESHOLD = 0.128
 
 # Sockets initialization
 passive_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

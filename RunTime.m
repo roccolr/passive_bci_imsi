@@ -176,9 +176,9 @@ const_a         = Mdl_a.Coeffs(1,2).Const;
 buffLen = 16; %servirà per le metriche nell'evaluation su Simulink
 
 %% per caricare un raw EEG su Simulink in assenza del caschetto
-addpath(genpath('sample data for calibration'));
-load('AntEsp_S3_B0_3.mat')
-ERaw = data{1,1}.X';
+% addpath(genpath('sample data for calibration'));
+% load('AntEsp_S3_B0_3.mat')
+% ERaw = data{1,1}.X';
 
 % disp('Avvio della simulazione Simulink in corso...');
 % % Esegue il modello e salva i risultati nella variabile 'out'
