@@ -13,12 +13,11 @@ LOCALHOST = "127.0.0.1"
 PASSIVE_PORT = 5011
 ACTIVE_PORT = 5010
 UNITY_PORT = 5006
+tolerance = 0.3
 
 # Fatigue and concentration thresholds
-FATIGUE_THRESHOLD = 0.355
-# FATIGUE_THRESHOLD = 100
-# CONCENTRATION_THRESHOLD = -100
-CONCENTRATION_THRESHOLD = 0.128
+FATIGUE_THRESHOLD = 1.0886 * (1+tolerance) # TBR
+CONCENTRATION_THRESHOLD = 0.2149*(1-tolerance) #EI
 
 # Sockets initialization
 passive_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -163,7 +162,7 @@ async def arm_handler():
 
                     # Debug print of the received and evaluated data
                     if latest_sender != "None":
-                        print(f"[{latest_sender}] F:{fatigue:>4.1f} | C:{concentration:>4.1f} -> Command sent: {command_str}")
+                        print(f"[{latest_sender}] F:{fatigue} | C:{concentration} -> Command sent: {command_str}")
                         latest_sender = "None"
                         no_data_warning = False
                     else:
