@@ -13,11 +13,14 @@ LOCALHOST = "127.0.0.1"
 PASSIVE_PORT = 5011
 ACTIVE_PORT = 5010
 UNITY_PORT = 5006
-tolerance = 0.3
+tolerance = 0.78
 
 # Fatigue and concentration thresholds
 FATIGUE_THRESHOLD = 1.0886 * (1+tolerance) # TBR
 CONCENTRATION_THRESHOLD = 0.2149*(1-tolerance) #EI
+
+# FATIGUE_THRESHOLD = 1000
+# CONCENTRATION_THRESHOLD = -1000
 
 # Sockets initialization
 passive_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

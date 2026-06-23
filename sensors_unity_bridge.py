@@ -106,7 +106,7 @@ async def unity_handler():
                 "vibrations": round(vibrations, 2),
                 "security": security
             }
-            print(f"Streaming data to Unity: {unity_data}")
+            # print(f"Streaming data to Unity: {unity_data}")
             payload_str = json.dumps(unity_data) + "\n"
             unity_sock.sendto(payload_str.encode('utf-8'), (LOCALHOST, UNITY_PORT))
             
