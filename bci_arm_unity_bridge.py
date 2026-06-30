@@ -47,8 +47,6 @@ hand_block = 0
 # set to 0 when the arm is free to move (BCI metrics are normal)
 # set to 1 when the arm has to be blocked due to fatigue or low concentration
 
-latest_sender = "None"
-
 
 async def passive_bci_handler():
     """
@@ -57,7 +55,7 @@ async def passive_bci_handler():
     Unpacks the binary payload into float values representing fatigue 
     and concentration levels, updating the global state.
     """
-    global fatigue, concentration, latest_sender
+    global fatigue, concentration
     while True:
         try:
             while True: 
@@ -66,7 +64,6 @@ async def passive_bci_handler():
                 
                 fatigue = values[0]
                 concentration = values[1]
-                latest_sender = "PASSIVE"
         except BlockingIOError:
             pass 
         except Exception as e:
@@ -82,13 +79,12 @@ async def active_bci_handler():
     Unpacks the binary payload into an integer value representing the active 
     motor imagery intent, updating the global grip command.
     """
-    global grip_command, latest_sender
+    global grip_command
     while True:
         try:
             while True:
                 data, _ = active_sock.recvfrom(8192)
                 grip_command = struct.unpack('<B', data)[0]
-                latest_sender = "ACTIVE"
         except BlockingIOError:
             pass
         except Exception as e:
@@ -126,8 +122,7 @@ async def arm_handler():
     Handles discovery, connection lifecycle, safety evaluations, 
     and command transmission to the robotic arm with auto-reconnection.
     """
-    global hand_block, latest_sender
-    no_data_warning = False
+    global hand_block
     
     while True:
         try:
@@ -164,14 +159,7 @@ async def arm_handler():
                     await client.write_gatt_char(ARM_SERVICE_UUID, command_str.encode('utf-8'))
 
                     # Debug print of the received and evaluated data
-                    if latest_sender != "None":
-                        print(f"[{latest_sender}] F:{fatigue} | C:{concentration} -> Command sent: {command_str}")
-                        latest_sender = "None"
-                        no_data_warning = False
-                    else:
-                        if not no_data_warning:
-                            print("No data received. Check if Simulink is running properly.")
-                            no_data_warning = True
+                    print(f"F:{fatigue} | C:{concentration} -> Command sent: {command_str}")
 
                     await asyncio.sleep(0.05)
                     
